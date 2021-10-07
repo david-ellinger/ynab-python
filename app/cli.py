@@ -1,12 +1,16 @@
 # cli.py
 import click
+from .ynab_service import YnabService
 from dotenv import load_dotenv
+import logging
 
 load_dotenv()  # take env variables from .env
 
-
+ynab = YnabService()
+logger = logging.getLogger()
 @click.command()
 def main():
+    logging.basicConfig(level=logging.INFO)
     print("I'm a beautiful CLI ✨")
 
 
@@ -17,6 +21,7 @@ def cli():
 
 @cli.command()
 def budgets():
+    return ynab.get_budgets()
     click.echo("Returned budgets")
 
 

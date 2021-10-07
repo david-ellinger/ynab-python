@@ -4,10 +4,10 @@ services:
     build: .
     image: ynab-cli
     volumes:
-      - ./data:/home/app_user/data
+      - .:/home/app_user
     stdin_open: true
     tty: true
-    command: python app/cli.py
+    command: /bin/bash
 
 
   test:
